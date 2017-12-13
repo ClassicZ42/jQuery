@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <style>
+
+                  body{
+                      font-size: 17px;
+                      font-family: arial;
+                      background-color: lightgrey;
+                      line-height: 1.5em;
+                  }
+                  header{
+                    background: #333;
+                    color: #fff;
+                    text-align: center;
+                    border-bottom: 4px black solid;
+                    margin-bottom: 10px;
+                    padding: 2px;
+                  }
+                  #container {
+                    width: 90%;
+                    margin: auto;
+                    padding: 10px;
+                  }
+
+
+          </style>
+          <title>Events</title>
+    </head>
+    <body>
+    <header>
+        <h1>Events</h1>
+    </header>
+    <div id="container">
+        <h3>Mouse Events</h3>
+        <button id="btn-1">Button1</button>
+        <button id="btn-2">Button2</button>
+        <p class="para1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea, sit!</p>
+        <hr>
+        <form id="form">
+			<label>Name</label><br>
+			<input type="text" id="name" name="name">
+			<br>
+			<label>Email</label><br>
+			<input type="text" id="email" name="email">
+			<br>
+			<label>Gender</label><br>
+			<select id="gender" name="gender">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select>
+			<br>
+			<input type="submit" value="Submit">
+		</form>
+    </div>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+
+          // on click event that fires a callback function
+          // put your Jquery in a document.ready function so the
+          // code runs when the document is finished loading
+
+              /*    $('#btn-1').click(function(){
+                    alert('Button 1 has been clicked');
+                  }); */
+
+          // the above function runs the .on method behind the scene
+          // this is how it works
+          // two params ('event', callback function)
+            /*  $('#btn-1').on('click',function(){
+                  alert('Button 1 has been clicked');
+              }); */
+
+
+          // how to effect other elements on the page with an event
+          // on a seperate element
+          // select the first element and add an event
+          /*
+          $('#btn-1').on('click',function(){
+                // call the second elemtent inside the firsts callback function
+                $('.para1').hide();
+
+          });
+
+          $('#btn-2').on('click',function(){
+                // call the second elemtent inside the firsts callback function
+                $('.para1').show();
+
+          }); */
+
+          // you can use the toggle method to show and hide
+        /*  $('#btn-1').on('click',function(){
+
+                $('.para1').toggle();
+
+          }); */
+
+          // a double click event
+        /*  $('#btn-1').dblclick(function(){
+                $('.para1').toggle();
+          }); */
+
+          // on hover
+          // cant use .on()
+          // not a real event
+          // it's shorthand for mouse enter and mouse lead events
+      /*    $('#btn-1').hover(function(){
+                $('.para1').toggle();
+          }); */
+
+          // mouse move event
+          /*  $('#btn-1').on('mousemove',function(){
+
+                $('.para1').toggle();
+
+            }); */
+
+
+            //getting console data about event
+            // here we use the click event
+
+          /*
+              $('#btn-1').on('click',function(e){
+                  console.log(e);
+              });
+
+          */
+          /*
+
+              $('#btn1').click(function(e){
+
+          // get btn1 id
+
+              //alert(e.currentTarget.id);
+
+          // get btn1 innerHTML
+
+              //alert(e.currentTarget.innerHTML);
+
+          //get btn1 outer html
+
+              //alert(e.currentTarget.outerHTML);
+
+          //get btn1 class
+
+              //alert(e.currentTarget.className);
+
+          });
+          */
+
+          // focus event
+          // this is when you click into an input
+          //  loops forever
+
+          /*  $('input').focus(function(){
+            alert('focus');
+            // this referes to element that is currently selected
+            // this is how you fix that loop
+            $(this).blur()
+
+          });
+          */
+
+
+          /*
+          // every time a key is pressed it and released
+          // what is pressed is logged
+    			$('input').keyup(function(e){
+    				console.log(e.target.value);
+    			});
+    			*/
+
+          // change event
+          // alerts when youve changed a value
+          $('select#gender').change(function(e){
+				  alert(e.target.value);
+			    });
+
+
+
+          //submitting inputs
+          // and logging their value's
+          $('#form').submit(function(e){
+            //stop the submision to fire code
+            e.preventDefault();
+            var name = $('input#name').val();
+            console.log(name);
+          });
+
+
+
+
+
+
+
+    </script>
+
+
+    </body>
+</html>

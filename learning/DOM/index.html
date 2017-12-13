@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+        body{
+            font-size: 17px;
+            font-family: arial;
+            background-color: lightgrey;
+            line-height: 1.5em;
+        }
+        header{
+          background: #333;
+          color: #fff;
+          text-align: center;
+          border-bottom: 4px black solid;
+          margin-bottom: 10px;
+          padding: 2px;
+        }
+        #container {
+          width: 90%;
+          margin: auto;
+          padding: 10px;
+        }
+        /*
+              you are adding this class to p2
+
+         */
+
+        .myClass{
+          background: green ;
+          color: blue;
+        }
+
+  </style>
+  <title>DOM</title>
+</head>
+<body>
+      <header>
+        <h1 >DOM Manipulation</h1>
+      </header>
+      <div id="container">
+
+        <button id="btn1">Button 1</button>
+      	<p class="para1">This is a paragraph</p>
+      	<p class="para2">This is another paragraph</p>
+      	<div id="myDiv"></div>
+      	<input type="text" id="newItem">
+      	<ul id="list">
+      		<li>List Item 1</li>
+      		<li>List Item 2</li>
+      		<li>List Item 3</li>
+      		<li>List Item 4</li>
+      	</ul>
+      	<a href="http://google.com">Google</a>
+      	<ul id="users"></ul>
+
+      </div>
+
+      <script type="text/javascript" src="jquery.js"></script>
+      <script>
+        $(document).ready(function(){
+          /*  //# css method
+            $('p.para1').css('color', 'red');  */
+
+            // # using multiple css properties
+            // put an object into the css method
+            $('p.para1').css({
+
+                color: 'red',
+                background: '#ccc',
+
+
+          });
+
+            //# adding a css class to an element p2
+            // use .addClass() method
+              $('p.para2').addClass('myClass');
+
+            //# removing a css class to an element p2
+            // use .removeClass() method
+              $('p.para2').removeClass('myClass');
+
+            //# toggle the class with that button
+              $('#btn1').click(function(){
+                $('p.para2').toggleClass('myClass');
+              })
+
+            //acess #myDiv
+            //# add text with the .text(); method
+
+            /*
+              $('#myDiv').text('Hello World');
+            */
+
+            // # add html
+            // with .html(); method
+            /*
+              $('#myDiv').html('<h3>Hello World</h3>');
+            // #get the value of the html above
+              alert($('#myDiv').html());
+            */
+
+
+            // # append to a list ( append is adding to the end)
+            // using the .append(); method
+
+            //  $('#list').append('<li>Append List Item</li>');
+
+
+            // # prepend to a list ( prepend is adding to the start)
+            // using the .prepend(); method
+            //  $('#list').prepend('<li>Prepended List Item</li>');
+
+
+            /*
+
+              //# .appendTo(); method
+              // puts para 2 before para 1
+                $('.para1').appendTo('.para2');
+
+              //# .prependTo(); method
+              // puts para 2 after para 1
+                $('.para1').prependTo('.para2');
+
+            */
+
+            /*
+
+              //# the .before() method puts the element before the targeted
+              // element not inside at the start like prepend
+                $('#list').before('<li>This is before the list</li>');
+
+
+              // # the .after() method puts the element after the targeted
+              // element not inside at the end like append
+                $('#list').after('<li>This is after the list</li>');
+
+            */
+
+
+            // # .empty() clears the element
+            // makes it empty
+            //  $('#list').empty();
+
+
+
+            // # .detach();  removes the element entirely from the
+            // rendered document
+            //  $('#list').detach();
+
+
+            // # .attr(); adds an atrribute to the html tag
+            // eg. type = "text/css" or href
+            // force a to open in another tab
+            // target = '_blank'
+            //  $('a').attr('target','_blank');
+
+            //# use .attr()
+            // to get the targeted element attributes
+            // alert($('a').attr('href'));
+
+            // # use .removeAttr();
+            // to remove an atribute from the target element
+            //   $('a').removeAttr('target')
+
+            // # .wrap()
+            // wrap an element inside another
+            // uses an h1 for each p
+            //$('p').wrap('<h1>');
+
+            //# wrapAll();
+            // same as wrap but this wraps everything in one p
+            //$('p').wrapAll('<h1>');
+
+
+            // # use input to add items to the list
+            // using the key up event
+            // targeting the enter key with it's key code ( enter is 13)
+            $('#newItem').keyup(function(e){
+                var code = e.which; //(this gets the key code of the key pressed)
+                if(code==13){
+                          // dont let it default
+                          e.preventDefault();
+                          // adding input to the li
+                          $('#list').append('<li>'+e.target.value+'</li>')
+                            }
+                                          });
+
+            });
+
+
+          // # time for array's
+
+          /*  var myArr = ['Brad', 'Kelley', 'Nate', 'Jose'];
+
+          // # .each(); method loops through the array
+          //.each takes a selector and a callbackfunction
+          // the callback function takes an index=i and a value = val
+            $.each(myArr,function(i,val){
+                // add all the items in the array to the Ul users inside their own li
+                $('#users').append('<li>'+val+'</li>');
+          });
+          */
+
+          //# putting list items into array's
+          var newArr = $('ul#list li').toArray();
+          // to array takes the selected elements and puts it into an array
+    			$.each(newArr, function(i, val){
+            // log the inner html of the array you made 
+    				console.log(val.innerHTML);
+    			});
+
+      </script>
+</script>
+</body>
+</html>

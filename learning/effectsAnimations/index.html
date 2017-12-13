@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+        body{
+            font-size: 17px;
+            font-family: arial;
+            background-color: lightgrey;
+            line-height: 1.5em;
+        }
+        header{
+          background: #333;
+          color: #fff;
+          text-align: center;
+          border-bottom: 4px black solid;
+          margin-bottom: 10px;
+          padding: 2px;
+        }
+        #container {
+          width: 90%;
+          margin: auto;
+          padding: 10px;
+        }
+        #box{
+          width: 500px;
+          height: 90px;
+          padding: 40px;
+          text-align: center;
+          color:#fff;
+          background: #333;
+        }
+
+        #box2{
+          background: red;
+          width: 100px;
+          height: 100px;
+          position: relative;
+        }
+
+
+  </style>
+  <title>Effects and Animation</title>
+</head>
+<body>
+      <header>
+        <h1>Effects and Animation</h1>
+      </header>
+      <div id="container">
+
+        <button id="btnSlideUp">Slide Up</button>
+        <button id="btnSlideDown">Slide Down</button>
+        <button id="btnSlideTog">Slide Tog</button>
+        <button id="btnStop">Stop IT!</button>
+
+
+        <hr>
+
+        <button id="btnFadeOut">Fade Out</button>
+        <button id="btnFadeIn">Fade In</button>
+        <button id="btnFadeTog">Fade Tog</button>
+
+
+        <hr>
+        <div id="box"><h1>Sup Universe</h1></div>
+
+        <hr>
+
+
+    		<button id="moveLeft">Move Left</button>
+    		<button id="moveRight">Move Right</button>
+    		<button id="moveAround">Move Around</button>
+    		<div id="box2"></div>
+
+       </div>
+
+      <script type="text/javascript" src="jquery.js"></script>
+      <script>
+
+          $(document).ready(function(){
+            // #get some elements faded xd
+            $('#btnFadeOut').click(function(){
+                      //# fadeOut(); method
+                      // params like fast slow possible
+                      // or better yet use ms
+                      //also takes a callback function
+                      $('#box').fadeOut(3000, function(){
+                          // then mess with some stuff if you need to(but this is optional)
+                          $('#btnFadeOut').text('WOw It Dissapeared!');
+                      });
+                    });
+
+
+                    // we also have fade in
+            $('#btnFadeIn').click(function(){
+                      //# fadeIn(); method
+                      // params like fast slow possible
+                      // or better yet use ms
+                      //also takes a callback function
+                      $('#box').fadeIn(3000, function(){
+                          // then mess with some stuff if you need to(but this is optional)
+                          $('#btnFadeIn').text('XD, no it Didnt!');
+                      });
+                    });
+
+                    // ofcourse we can toggle bruh
+            $('#btnFadeTog').click(function(){
+                      //# fadeToggle(); method
+                      // params like fast slow possible
+                      // or better yet use ms
+                      //also takes a callback function
+                      $('#box').fadeToggle(3000, function(){
+                          // then mess with some stuff if you need to(but this is optional)
+                          $('#btnFadeTog').text('ONLY I MAY CONTROL THIS DIV !');
+                      });
+                    });
+
+                    /// Lets slide
+
+            $('#btnSlideUp').click(function(){
+
+                      $('#box').slideUp(3000, function(){
+                          // then mess with some stuff if you need to(but this is optional)
+
+                      });
+                    });
+
+            $('#btnSlideDown').click(function(){
+
+                      $('#box').slideDown(3000, function(){
+                          // then mess with some stuff if you need to(but this is optional)
+
+                      });
+                    });
+
+            $('#btnSlideTog').click(function(){
+
+                      $('#box').slideToggle(3000, function(){
+                          // then mess with some stuff if you need to(but this is optional)
+
+                      });
+                    });
+            $('#btnStop').click(function(){
+              // stopping an event
+        				$('#box').stop();
+        			});
+
+
+              // lets do some animation
+
+              $('#moveRight').click(function(){
+                // use .animate( ) method and pput in an object
+                $('#box2').animate({
+                  // position have to be relative in css
+                  // move 500 px from the left ( aka right)
+                  left: 500,
+        					height: '300px',
+        					width:'300px',
+        					opacity: '0.5'
+                });
+              })
+
+
+              $('#moveLeft').click(function(){
+                // use .animate( ) method and pput in an object
+                $('#box2').animate({
+                  // position have to be relative in css
+                  // move 0 px from the right( aka left)
+
+    					left: 0,
+    					height: '100px',
+    					width: '100px',
+    					opacity:'1'
+                });
+              })
+
+              // move around
+
+			$('#moveAround').click(function(){
+        // make the box2 a var so you can reference it easily
+				var box = $('#box2');
+				box.animate({
+					left: 300
+				});
+				box.animate({
+					top: 300
+				});
+				box.animate({
+					left:0,
+					top: 300
+				});
+				box.animate({
+					left: 0,
+					top:0
+				});
+			});
+
+
+
+/////////////////////////////////////////////////////////////End of doc.ready
+          });
+
+
+      </script>
+</script>
+</body>
+</html>
